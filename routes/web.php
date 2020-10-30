@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $qp = request()->query();
-    $perPage = request()->input('per-page') ?? 10;
-    $searchTerm = request()->input('search-term') ?? '';
-    $sortField = request()->input('sort-field') ?? 'name';
+    $perPage = request()->input('perPage') ?? 10;
+    $searchTerm = request()->input('searchTerm') ?? '';
+    $sortField = request()->input('sortField') ?? 'name';
 
     return view('welcome', [
         'qp' => $qp,

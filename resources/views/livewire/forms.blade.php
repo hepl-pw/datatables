@@ -2,18 +2,18 @@
     <div class="row">
         <form class="col" action="/">
             <div class="form-group">
-                <label for="per-page">Per Page:</label>
-                <select name="per-page"
+                <label for="perPage">Per Page:</label>
+                <select name="perPage"
                         wire:model="perPage"
                         class="form-control"
-                        id="per-page">
-                    <option value="10" {{$perPage == 10 ? 'selected' : ''}}>10</option>
-                    <option value="15" {{$perPage == 15 ? 'selected' : ''}}>15</option>
-                    <option value="25" {{$perPage == 25 ? 'selected' : ''}}>25</option>
+                        id="perPage">
+                    <option>10</option>
+                    <option>15</option>
+                    <option>25</option>
                 </select>
             </div>
             @foreach($qp as $k => $p)
-                @if($k!='per-page')
+                @if($k!='perPage')
                     <input type="hidden" name="{{$k}}" value="{{$p}}">
                 @endif
             @endforeach
@@ -23,18 +23,18 @@
         </form>
         <form class="col" action="/">
             <div class="form-group">
-                <label for="search-term">Search term or email:</label>
+                <label for="searchTerm">Search term or email:</label>
                 <input type="search"
                        class="form-control"
                        wire:model="searchTerm"
-                       name="search-term"
-                       id="search-term"
+                       name="searchTerm"
+                       id="searchTerm"
                        value="{{$searchTerm}}"
                        placeholder="name or email"
                 >
             </div>
             @foreach($qp as $k => $p)
-                @if($k!='search-term')
+                @if($k!='searchTerm')
                     <input type="hidden" name="{{$k}}" value="{{$p}}">
                 @endif
             @endforeach

@@ -17,7 +17,11 @@ class DataTable extends Component
     public $sortOrder = true;
     public $perPage;
 
-    protected $queryString = ['perPage', 'searchTerm', 'sortField'];
+    protected $queryString = [
+        'perPage',
+        'searchTerm' => ['except' => ''],
+        'sortField' => ['except' => '']
+    ];
     protected $paginationTheme = 'bootstrap';
     protected $listeners = [
         'perPageUpdated' => 'updatePerPage',

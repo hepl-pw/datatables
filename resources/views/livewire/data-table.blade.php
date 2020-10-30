@@ -5,9 +5,11 @@
             @php
                 $qpf = array_filter($qp, fn($p) => $p !== 'sort-field' ,ARRAY_FILTER_USE_KEY);
             @endphp
-            <th scope="col"><a href="/?sort-field=name&amp;{{http_build_query($qpf)}}">Name</a></th>
-            <th scope="col"><a href="/?sort-field=email&amp;{{http_build_query($qpf)}}">Email</a></th>
-            <th scope="col"><a href="/?sort-field=birthdate&amp;{{http_build_query($qpf)}}">Birthdate</a></th>
+            @foreach(['name','email','birthdate'] as $label)
+                <th scope="col"><a wire:click.prevent="updateSortField('{{$label}}')"
+                                   href="/?sort-field={{$label}}&amp;{{http_build_query($qpf)}}">{{ucwords($label)}}</a>
+                </th>
+            @endforeach
         </tr>
         </thead>
         <tbody>

@@ -13,10 +13,11 @@ class DataTable extends Component
     public $qp;
     public $searchTerm;
     public $sortField;
+    public $sortOrder = true;
     public $perPage;
 
     protected $contacts;
-    protected $queryString = ['perPage', 'searchTerm'];
+    protected $queryString = ['perPage', 'searchTerm', 'sortField'];
     protected $paginationTheme = 'bootstrap';
     protected $listeners = [
         'perPageUpdated' => 'updatePerPage',
@@ -33,12 +34,21 @@ class DataTable extends Component
         $this->searchTerm = $searchTerm;
     }
 
+    public function updateSortField($sortField)
+    {
+        if ($this->sortField === $sortField) {
+            $this->sortOrder = !$this->sortOrder;
+        }
+
+        $this->sortField = $sortField;
+    }
+
     public function render()
     {
         $this->contacts = Contact::query()
             ->where('name', 'like', '%'.$this->searchTerm.'%')
             ->orWhere('email', 'like', '%'.$this->searchTerm.'%')
-            ->orderBy($this->sortField)
+            ->orderBy($this->sortField, $this->sortOrder ? 'asc' : 'desc')
             ->paginate($this->perPage);
 
         return view('livewire.data-table', ['contacts' => $this->contacts]);

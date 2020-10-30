@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Contact;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -16,7 +17,6 @@ class DataTable extends Component
     public $sortOrder = true;
     public $perPage;
 
-    protected $contacts;
     protected $queryString = ['perPage', 'searchTerm', 'sortField'];
     protected $paginationTheme = 'bootstrap';
     protected $listeners = [
@@ -24,17 +24,17 @@ class DataTable extends Component
         'searchTermUpdated' => 'updateSearchTerm'
     ];
 
-    public function updatePerPage($perPage)
+    public function updatePerPage($perPage): void
     {
         $this->perPage = $perPage;
     }
 
-    public function updateSearchTerm($searchTerm)
+    public function updateSearchTerm($searchTerm): void
     {
         $this->searchTerm = $searchTerm;
     }
 
-    public function updateSortField($sortField)
+    public function updateSortField($sortField): void
     {
         if ($this->sortField === $sortField) {
             $this->sortOrder = !$this->sortOrder;
@@ -43,14 +43,17 @@ class DataTable extends Component
         $this->sortField = $sortField;
     }
 
-    public function render()
+    public function getContactsProperty(): LengthAwarePaginator
     {
-        $this->contacts = Contact::query()
+        return Contact::query()
             ->where('name', 'like', '%'.$this->searchTerm.'%')
             ->orWhere('email', 'like', '%'.$this->searchTerm.'%')
             ->orderBy($this->sortField, $this->sortOrder ? 'asc' : 'desc')
             ->paginate($this->perPage);
+    }
 
-        return view('livewire.data-table', ['contacts' => $this->contacts]);
+    public function render()
+    {
+        return view('livewire.data-table');
     }
 }

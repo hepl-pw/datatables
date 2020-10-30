@@ -13,7 +13,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($contacts as $contact)
+        @foreach($this->contacts as $contact)
             <tr>
                 <td>{{$contact->name}}</td>
                 <td>{{$contact->email}}</td>
@@ -23,10 +23,10 @@
         </tbody>
     </table>
     <div>
-        <p>Displaying {{$contacts->perPage()}} on {{$contacts->total()}},
-            from {{1 + $contacts->perPage() * ($contacts->currentPage()-1) }} to
-            {{($contacts->hasMorePages()?$contacts->perPage():$contacts->count())
-                +$contacts->perPage()*($contacts->currentPage()-1)}}</p>
+        <p>Displaying {{$this->contacts->perPage()}} on {{$this->contacts->total()}},
+            from {{1 + $this->contacts->perPage() * ($this->contacts->currentPage()-1) }} to
+            {{($this->contacts->hasMorePages()?$this->contacts->perPage():$this->contacts->count())
+                +$this->contacts->perPage()*($this->contacts->currentPage()-1)}}</p>
     </div>
-    {{$contacts->links()}}
+    {{$this->contacts->links()}}
 </div>

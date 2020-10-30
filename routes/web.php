@@ -24,12 +24,6 @@ Route::get('/', function () {
         'qp' => $qp,
         'perPage' => $perPage,
         'searchTerm' => $searchTerm,
-        'sortField' => $sortField,
-        'contacts' =>
-            Contact::query()
-                ->where('name', 'like', '%'.$searchTerm.'%')
-                ->orWhere('email', 'like', '%'.$searchTerm.'%')
-                ->orderBy($sortField)
-                ->paginate($perPage)
+        'sortField' => $sortField
     ]);
 });

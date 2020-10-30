@@ -16,15 +16,21 @@ class DataTable extends Component
     public $perPage;
 
     protected $contacts;
-    protected $queryString = ['perPage'];
+    protected $queryString = ['perPage', 'searchTerm'];
     protected $paginationTheme = 'bootstrap';
     protected $listeners = [
-        'perPageUpdated' => 'updatePerPage'
+        'perPageUpdated' => 'updatePerPage',
+        'searchTermUpdated' => 'updateSearchTerm'
     ];
 
     public function updatePerPage($perPage)
     {
         $this->perPage = $perPage;
+    }
+
+    public function updateSearchTerm($searchTerm)
+    {
+        $this->searchTerm = $searchTerm;
     }
 
     public function render()

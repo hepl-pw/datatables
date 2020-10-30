@@ -26,6 +26,7 @@
                 <label for="search-term">Search term or email:</label>
                 <input type="search"
                        class="form-control"
+                       wire:model="searchTerm"
                        name="search-term"
                        id="search-term"
                        value="{{$searchTerm}}"

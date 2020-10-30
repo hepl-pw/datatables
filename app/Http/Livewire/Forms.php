@@ -10,12 +10,12 @@ class Forms extends Component
     public $perPage;
     public $searchTerm;
 
-    public function updatedPerPage()
+    public function updatedPerPage(): void
     {
         $this->emit('perPageUpdated', $this->perPage);
     }
 
-    public function updatedSearchTerm()
+    public function updatedSearchTerm(): void
     {
         $this->emit('searchTermUpdated', $this->searchTerm);
     }

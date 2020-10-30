@@ -4,6 +4,7 @@
             <div class="form-group">
                 <label for="per-page">Per Page:</label>
                 <select name="per-page"
+                        wire:model="perPage"
                         class="form-control"
                         id="per-page">
                     <option value="10" {{$perPage == 10 ? 'selected' : ''}}>10</option>

@@ -4,15 +4,28 @@ namespace App\Http\Livewire;
 
 use App\Models\Contact;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class DataTable extends Component
 {
+    use WithPagination;
+
     public $qp;
     public $searchTerm;
     public $sortField;
     public $perPage;
 
     protected $contacts;
+    protected $queryString = ['perPage'];
+    protected $paginationTheme = 'bootstrap';
+    protected $listeners = [
+        'perPageUpdated' => 'updatePerPage'
+    ];
+
+    public function updatePerPage($perPage)
+    {
+        $this->perPage = $perPage;
+    }
 
     public function render()
     {

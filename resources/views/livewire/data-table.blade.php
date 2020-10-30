@@ -26,5 +26,5 @@
             {{($contacts->hasMorePages()?$contacts->perPage():$contacts->count())
                 +$contacts->perPage()*($contacts->currentPage()-1)}}</p>
     </div>
-    {{$contacts->appends($qp)->links()}}
+    {{$contacts->links()}}
 </div>

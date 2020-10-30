@@ -10,6 +10,11 @@ class Forms extends Component
     public $perPage;
     public $searchTerm;
 
+    public function updatedPerPage()
+    {
+        $this->emit('perPageUpdated', $this->perPage);
+    }
+
     public function render()
     {
         return view('livewire.forms');

@@ -27,6 +27,7 @@
     'searchTerm' => $searchTerm,
     'sortField' => $sortField,
     'perPage' => $perPage,
+    'sortOrder' => $sortOrder,
     ])
 </main>
 @livewireScripts

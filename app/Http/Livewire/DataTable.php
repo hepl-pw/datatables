@@ -14,13 +14,14 @@ class DataTable extends Component
     public $qp;
     public $searchTerm;
     public $sortField;
-    public $sortOrder = true;
+    public $sortOrder;
     public $perPage;
 
     protected $queryString = [
         'perPage',
         'searchTerm' => ['except' => ''],
-        'sortField' => ['except' => '']
+        'sortField',
+        'sortOrder'
     ];
     protected $paginationTheme = 'bootstrap';
     protected $listeners = [
@@ -41,9 +42,8 @@ class DataTable extends Component
     public function updateSortField($sortField): void
     {
         if ($this->sortField === $sortField) {
-            $this->sortOrder = !$this->sortOrder;
+            $this->sortOrder = $this->sortOrder === 'asc' ? 'desc' : 'asc';
         }
-
         $this->sortField = $sortField;
     }
 
@@ -52,7 +52,7 @@ class DataTable extends Component
         return Contact::query()
             ->where('name', 'like', '%'.$this->searchTerm.'%')
             ->orWhere('email', 'like', '%'.$this->searchTerm.'%')
-            ->orderBy($this->sortField, $this->sortOrder ? 'asc' : 'desc')
+            ->orderBy($this->sortField, $this->sortOrder)
             ->paginate($this->perPage);
     }
 

@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +18,13 @@ Route::get('/', function () {
     $perPage = request()->input('perPage') ?? 10;
     $searchTerm = request()->input('searchTerm') ?? '';
     $sortField = request()->input('sortField') ?? 'name';
+    $sortOrder = request()->input('sortOrder') ?? 'asc';
 
     return view('welcome', [
         'qp' => $qp,
         'perPage' => $perPage,
         'searchTerm' => $searchTerm,
-        'sortField' => $sortField
+        'sortField' => $sortField,
+        'sortOrder' => $sortOrder,
     ]);
 });

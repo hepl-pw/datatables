@@ -37,6 +37,8 @@ class DataTable extends Component
     public function updateSearchTerm($searchTerm): void
     {
         $this->searchTerm = $searchTerm;
+
+        $this->resetPage();
     }
 
     public function updateSortField($sortField): void

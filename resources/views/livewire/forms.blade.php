@@ -6,10 +6,10 @@
                 <select name="perPage"
                         wire:model="perPage"
                         class="form-control"
-                        id="perPage">
-                    <option>10</option>
-                    <option>15</option>
-                    <option>25</option>
+                        id="perPage">{{$perPage}}
+                    <option wire:key="10" @if($qp['perPage'] === 10) selected @endif>10</option>
+                    <option wire:key="15" @if($qp['perPage'] === 15) selected @endif>15</option>
+                    <option wire:key="25" @if($qp['perPage'] === 25) selected @endif>25</option>
                 </select>
             </div>
             @foreach($qp as $k => $p)

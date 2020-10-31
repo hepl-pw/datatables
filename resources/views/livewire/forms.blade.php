@@ -8,7 +8,9 @@
                         class="form-control"
                         id="perPage">
                     @foreach([10,15,25] as $pp)
-                        <option wire:key="{{$pp}}" @if($qp['perPage'] == $pp) selected @endif>{{$pp}}</option>
+                        <option wire:key="{{$pp}}"
+                                value="{{$pp}}"
+                                @if($qp['perPage'] == $pp) selected @endif>{{$pp}}</option>
                     @endforeach
                 </select>
             </div>

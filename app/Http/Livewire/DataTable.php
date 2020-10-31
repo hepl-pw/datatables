@@ -3,9 +3,10 @@
 namespace App\Http\Livewire;
 
 use App\Models\Contact;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Contracts\View\View;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class DataTable extends Component
 {
@@ -23,7 +24,7 @@ class DataTable extends Component
         'sortField',
         'sortOrder'
     ];
-    protected $paginationTheme = 'bootstrap';
+    //protected $paginationTheme = 'bootstrap';
     protected $listeners = [
         'perPageUpdated' => 'updatePerPage',
         'searchTermUpdated' => 'updateSearchTerm'
@@ -40,6 +41,12 @@ class DataTable extends Component
 
         $this->resetPage();
     }
+
+    public function paginationView()
+    {
+        return 'livewire.custom-bootstrap';
+    }
+
 
     public function updateSortField($sortField): void
     {
@@ -58,7 +65,7 @@ class DataTable extends Component
             ->paginate($this->perPage);
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.data-table');
     }

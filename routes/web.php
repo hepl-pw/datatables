@@ -26,5 +26,6 @@ Route::get('/', function () {
         'searchTerm' => $searchTerm,
         'sortField' => $sortField,
         'sortOrder' => $sortOrder,
+        'page' => $page,
     ]);
 });

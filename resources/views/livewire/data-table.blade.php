@@ -23,11 +23,11 @@
         </tbody>
     </table>
     <div>
-        <!-- TODO: Fix limit cases (dor instance, last page with few elements, etc.)  -->
+        <!-- TODO: Fix limit cases (for instance, last page with few elements, no element, etc.)  -->
         <p>Displaying {{$this->contacts->perPage()}} on {{$this->contacts->total()}},
             from {{1 + $this->contacts->perPage() * ($this->contacts->currentPage()-1) }} to
             {{($this->contacts->hasMorePages()?$this->contacts->perPage():$this->contacts->count())
                 +$this->contacts->perPage()*($this->contacts->currentPage()-1)}}</p>
     </div>
-    {{$this->contacts->links()}}
+    {{$this->contacts->appends($qp)->links()}}
 </div>

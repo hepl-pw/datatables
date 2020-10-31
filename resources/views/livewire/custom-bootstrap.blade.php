@@ -1,5 +1,5 @@
 <div>
-
+    <!-- TODO : remember state !! -->
     @if ($paginator->hasPages())
         <nav>
             <h2 class="sr-only">Pagination</h2>

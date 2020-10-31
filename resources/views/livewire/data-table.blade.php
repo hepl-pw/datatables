@@ -23,6 +23,7 @@
         </tbody>
     </table>
     <div>
+        <!-- TODO: Fix limit cases (dor instance, last page with few elements, etc.)  -->
         <p>Displaying {{$this->contacts->perPage()}} on {{$this->contacts->total()}},
             from {{1 + $this->contacts->perPage() * ($this->contacts->currentPage()-1) }} to
             {{($this->contacts->hasMorePages()?$this->contacts->perPage():$this->contacts->count())

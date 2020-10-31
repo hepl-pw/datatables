@@ -7,9 +7,9 @@
                         wire:model="perPage"
                         class="form-control"
                         id="perPage">
-                    <option wire:key="10" @if($qp['perPage'] === 10) selected @endif>10</option>
-                    <option wire:key="15" @if($qp['perPage'] === 15) selected @endif>15</option>
-                    <option wire:key="25" @if($qp['perPage'] === 25) selected @endif>25</option>
+                    @foreach([10,15,25] as $pp)
+                        <option wire:key="{{$pp}}" @if($qp['perPage'] == $pp) selected @endif>{{$pp}}</option>
+                    @endforeach
                 </select>
             </div>
             @foreach($qp as $k => $p)

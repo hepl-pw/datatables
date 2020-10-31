@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $qp = request()->query();
-    $perPage = request()->input('perPage') ?? 10;
-    $searchTerm = request()->input('searchTerm') ?? '';
-    $sortField = request()->input('sortField') ?? 'name';
-    $sortOrder = request()->input('sortOrder') ?? 'asc';
+    $qp['perPage'] = $perPage = request()->input('perPage') ?? 10;
+    $qp['searchTerm'] = $searchTerm = request()->input('searchTerm') ?? '';
+    $qp['sortField'] = $sortField = request()->input('sortField') ?? 'name';
+    $qp['sortOrder'] = $sortOrder = request()->input('sortOrder') ?? 'asc';
+    $qp['page'] = $page = request()->input('page') ?? 1;
 
     return view('welcome', [
         'qp' => $qp,

@@ -1,4 +1,15 @@
 <div>
+    <div>
+        <p>
+            {!! __('Showing') !!}
+            <span class="font-medium">{{ $paginator->firstItem() }}</span>
+            {!! __('to') !!}
+            <span class="font-medium">{{ $paginator->lastItem() }}</span>
+            {!! __('of') !!}
+            <span class="font-medium">{{ $paginator->total() }}</span>
+            {!! __('results') !!}
+        </p>
+    </div>
     @if ($paginator->hasPages())
         <nav>
             <h2 class="sr-only">Pagination</h2>
